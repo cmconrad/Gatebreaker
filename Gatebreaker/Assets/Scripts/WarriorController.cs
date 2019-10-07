@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Character
+public class WarriorController : Character
 {
 
     float speed;
@@ -12,10 +12,10 @@ public class PlayerController : Character
     void Update()
     {
         speed = 0;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             speed -= moveSpeed;
         transform.localScale = new Vector3(1, 1, 1);
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             speed += moveSpeed;
         transform.localScale = new Vector3(-1, 1, 1);
 
@@ -23,9 +23,10 @@ public class PlayerController : Character
 
 
         // Jumping?
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !jumping)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !jumping)
         {
             jumping = true;
+            jumping = false;//edit this out later!
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Pow(2 * jumpHeight * rb.gravityScale * 9.81f, 0.5f));
         }
 
