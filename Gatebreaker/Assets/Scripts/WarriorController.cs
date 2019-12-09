@@ -9,6 +9,8 @@ public class WarriorController : Character
 
     public Animator ani;
 
+    public Collider2D ring;
+
 
     private void Start()
     {
@@ -46,6 +48,8 @@ public class WarriorController : Character
             Swing();
             ani.SetTrigger("Attack");
             ani.SetTrigger("Idle");
+            
+           
         }
     }
 }
